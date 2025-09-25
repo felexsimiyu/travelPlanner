@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plan Your Safari | Native Afrika Voyages</title>
+  <link rel="icon" href="data:,"> 
+
+  <!-- ✅ Google Ads global tag -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17523581170"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-17523581170');
+  </script>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: #f8f9fa;
+      color: #333;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 20px 10px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+    header img {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+    .header-text {
+      flex: 1;
+      min-width: 200px;
+    }
+    .header-text h1 {
+      font-size: 28px;
+      margin: 0 0 5px 0;
+      color: #2c3e50;
+    }
+    .header-text p {
+      font-size: 15px;
+      margin: 5px 0;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    /* Destinations Section */
+    .destinations, .form-section {
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .destinations h2, .form-section h2 {
+      margin-bottom: 15px;
+      font-size: 22px;
+    }
+    .destinations h2 { color: #27ae60; }
+    .form-section h2 { color: #e67e22; }
+
+    /* Horizontal scrolling destinations */
+    .destination-list {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      padding: 10px 0;
+      scroll-snap-type: x mandatory;
+    }
+    .destination-item {
+      flex: 0 0 auto;
+      background: #27ae60;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 8px;
+      white-space: nowrap;
+      font-weight: bold;
+      scroll-snap-align: start;
+    }
+
+    /* Carousel */
+    .carousel {
+      position: relative;
+      margin-top: 20px;
+      overflow: hidden;
+      border-radius: 10px;
+      max-width: 100%;
+    }
+    .carousel-images {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .carousel-item {
+      position: relative;
+      flex-shrink: 0;
+      width: 100%;
+    }
+    .carousel-item img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .caption {
+      position: absolute;
+      bottom: 15px;
+      left: 20px;
+      color: white;
+      font-size: 18px;
+      background: rgba(0,0,0,0.5);
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      font-size: 30px;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+      z-index: 2;
+    }
+    .prev { left: 10px; }
+    .next { right: 10px; }
+
+    /* Form Styles */
+    form label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+    form input, form select, form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+    form button {
+      width: 100%;
+      padding: 14px;
+      background: #27ae60;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    form button:hover { background: #219150; }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      header img {
+        width: 100px;
+        height: 100px;
+      }
+      .header-text h1 { font-size: 24px; }
+      .header-text p { font-size: 14px; }
+      .carousel-item img { max-height: 250px; }
+    }
+
+    @media (max-width: 480px) {
+      .destination-item { padding: 8px 12px; font-size: 14px; }
+      form input, form select, form textarea { padding: 10px; font-size: 14px; }
+      form button { font-size: 16px; padding: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <header>
+      <img src="logo.jpeg" alt="Native Afrika Logo">
+      <div class="header-text">
+        <h1>Native Afrika Voyages</h1>
+        <p>We’ll give you the African safari you really want. At Native Afrika Voyages, we listen to your desires and tailor-make the holiday of a lifetime, including intercoutry journeys like Masai Mara & Serengeti. Every journey is crafted just for you by our expert guides 🌿.</p>
+        <p><strong>Memberships:</strong> Native Afrika Voyages is a proud member of the <strong>Tour Operators Society of Kenya (TOSK)</strong> and <strong>KATO</strong>. Our services are vetted and adhere to the highest standards of quality and professionalism.</p>
+      </div>
+    </header>
+
+    <!-- Destinations -->
+    <section class="destinations">
+      <h2>Favorite Kenyan Destinations</h2>
+      <div class="destination-list">
+        <div class="destination-item">Masai Mara Game Reserve</div>
+        <div class="destination-item">Amboseli National Park</div>
+        <div class="destination-item">Nairobi National Park</div>
+        <div class="destination-item">Ol Pejeta Conservancy</div>
+        <div class="destination-item">Lake Elementaita National Park</div>
+        <div class="destination-item">Hell’s Gate National Reserve</div>
+        <div class="destination-item">Lake Nakuru National Park</div>
+        <div class="destination-item">Aberdares National Park</div>
+        <div class="destination-item">Samburu National Reserve</div>
+        <div class="destination-item">Mt. Longonot</div>
+      </div>
+
+      <div class="carousel">
+        <button class="prev">&#10094;</button>
+        <div class="carousel-images">
+          <div class="carousel-item"><img src="Mara.jpg" alt="Masai Mara"><div class="caption">Masai Mara Game Reserve</div></div>
+          <div class="carousel-item"><img src="amboseli.jpeg" alt="Amboseli"><div class="caption">Amboseli National Park</div></div>
+          <div class="carousel-item"><img src="Nairobi.jpeg" alt="Nairobi"><div class="caption">Nairobi National Park</div></div>
+          <div class="carousel-item"><img src="ol-pejeta.jpeg" alt="Ol Pejeta"><div class="caption">Ol Pejeta Conservancy</div></div>
+          <div class="carousel-item"><img src="nakuru.jpg" alt="Nakuru"><div class="caption">Lake Nakuru National Park</div></div>
+        </div>
+        <button class="next">&#10095;</button>
+      </div>
+    </section>
+
+    <!-- Form -->
+    <section class="form-section">
+      <h2>Plan Your Next Adventure – Get Your Safari Quote Now!</h2>
+      <form action="https://formsubmit.co/travlways@gmail.com" method="POST">
+        <input type="hidden" name="_next" value="https://cheery-mandazi-97c16e.netlify.app/">
+        <input type="hidden" name="_captcha" value="false">
+
+        <label>Name *</label>
+        <input type="text" name="Name" required />
+        <label>Phone Number *</label>
+        <input type="tel" name="Phone" required />
+        <label>Email *</label>
+        <input type="email" name="Email" required />
+        <label>Country of Residence *</label>
+        <input type="text" name="Country" required />
+
+        <label>Select Preferred Vehicle *</label>
+        <select name="Vehicle" required>
+          <option value="">-- Select --</option>
+          <option value="4x4 Land Cruiser">4x4 Land Cruiser</option>
+          <option value="4x4 Safari Van">4x4 Safari Van</option>
+        </select>
+
+        <label>Your Budget *</label>
+        <select name="Budget" required>
+          <option value="">-- Select Budget --</option>
+          <option value="$300-$400 USD per adult per day">Budget: $300-$400 USD per adult per day</option>
+          <option value="$400-$600 USD per adult per day">Mid-Range: $400-$600 USD per adult per day</option>
+          <option value="$1,000-$1,500 USD per adult per day">Luxury: $1,000-$1,500 USD per adult per day</option>
+          <option value="$2000+ USD per adult per day">High-End: $2000+ USD per adult per day</option>
+        </select>
+
+        <label>Number of Adults (16+ years) *</label>
+        <input type="number" name="Adults" required />
+        <label>Number of Children (0-15 years)</label>
+        <input type="number" name="Children" />
+        <label>Expected Arrival Date and Time *</label>
+        <input type="datetime-local" name="Arrival" required />
+        <label>Number of Days & Nights *</label>
+        <input type="text" name="Duration" required />
+        <label>Name of Safari of Interest / Tailor-Made Safari *</label>
+        <input type="text" name="SafariName" required />
+        <label>Your Favourite Animal</label>
+        <input type="text" name="Animal" />
+        <label>Special Requirements (if any)</label>
+        <textarea name="SpecialRequirements"></textarea>
+        <label>Additional Note</label>
+        <textarea name="Note"></textarea>
+
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+
+    <footer>
+      <p>© 2025 Native Afrika Voyages | Bespoke Safaris in Kenya</p>
+    </footer>
+  </div>
+
+  <script>
+    let currentIndex = 0;
+    const items = document.querySelectorAll('.carousel-item');
+    const totalItems = items.length;
+
+    function updateCarousel() {
+      const carouselWidth = items[0].clientWidth;
+      document.querySelector('.carousel-images').style.transform = `translateX(-${carouselWidth * currentIndex}px)`;
+    }
+
+    document.querySelector('.next').addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % totalItems;
+      updateCarousel();
+    });
+    document.querySelector('.prev').addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+      updateCarousel();
+    });
+
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % totalItems;
+      updateCarousel();
+    }, 3000);
+  </script>
+</body>
+</html>
